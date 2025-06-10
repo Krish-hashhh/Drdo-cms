@@ -1,0 +1,139 @@
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color:#e6f7ff;
+  padding: 1rem;
+}
+
+
+.login-form {
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  max-width: 400px;
+  width: 100%;
+}
+
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: #004466;
+}
+
+.input-group {
+  margin-bottom: 1.2rem;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #334155;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.email-wrapper{
+  display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.password-wrapper input {
+  flex: 1;
+}
+
+.toggle-password {
+  background-color: #e0e7ff;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #1e3a8a;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-password:hover {
+  background-color: #c7d2fe;
+}
+
+.error-message {
+  color: #dc2626;
+  background-color: #fee2e2;
+  padding: 0.5rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+
+.login-btn {
+  width: 100%;
+  background-color: #004466;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  opacity: .80;
+}
+.Registeration-link{
+  text-align: center;
+  margin-top: 10px;
+}
+.Registeration-link span{
+  color:rgb(57, 57, 151)
+
+}
+.Registeration-link span:hover{
+  text-decoration: underline;
+}
+
+.log-a{
+   color: white;
+   text-decoration: none;
+}
+
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 1.5rem;
+  }
+
+  .login-form h2 {
+    font-size: 1.5rem;
+  }
+}
