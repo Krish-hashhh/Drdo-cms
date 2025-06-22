@@ -5,6 +5,8 @@ import Footer from './Components/Footer';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Complaint from './Components/Complaint';
+import History from './Components/History';
+
 import './App.css';
 import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
 function App(){
@@ -26,6 +28,9 @@ function App(){
                  </Route>
                  <Route exact path = "/complaint">
                     <Complaint/>
+                 </Route>
+                 <Route exact path = "/history">
+                    <History/>
                  </Route>
                </Switch>
             </div>

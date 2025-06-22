@@ -1,0 +1,74 @@
+.history-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 2rem;
+  background: #f7f9fc;
+  border-radius: 12px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.history-container h2 {
+  text-align: center;
+  color: #003b4d;
+  margin-bottom: 2rem;
+}
+
+.complaint-list {
+  list-style: none;
+  padding: 0;
+}
+
+.complaint-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+  border-left: 8px solid;
+  transition: all 0.3s ease;
+}
+
+.complaint-card.accepted {
+  border-color: #28a745;
+}
+
+.complaint-card.processing {
+  border-color: #ffc107;
+}
+
+.complaint-card.rejected {
+  border-color: #dc3545;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.status-tag {
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.complaint-card.accepted .status-tag {
+  background-color: #28a745;
+}
+
+.complaint-card.processing .status-tag {
+  background-color: #ffc107;
+  color: black;
+}
+
+.complaint-card.rejected .status-tag {
+  background-color: #dc3545;
+}
+
+.card-body p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
