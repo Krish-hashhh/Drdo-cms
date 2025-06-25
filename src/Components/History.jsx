@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import './History.css';
 
 function History() {
@@ -31,6 +33,32 @@ function History() {
         corridor: "C",
         description: "Corridor lights not turning on.",
         status: "Rejected"
+      },
+      {
+        id: 4,
+        hostel: "Srinivas Ramanujan Bhawan",
+        block: "B",
+        location: "Room",
+        roomNumber: "225",
+        description: "The tube light is not working.",
+        status: "Processing"
+      },
+      {
+        id: 5,
+        hostel: "Meera Bhawan",
+        block: "3",
+        location: "Toilet",
+        toilet: "T4",
+        description: "Water leakage in Toilet T4.",
+        status: "Accepted"
+      },
+      {
+        id: 6,
+        hostel: "Vishwakarma Bhawan",
+        location: "Corridor",
+        corridor: "C",
+        description: "Corridor lights not turning on.",
+        status: "Rejected"
       }
     ];
 
@@ -39,6 +67,11 @@ function History() {
 
   return (
     <div className="history-container">
+      <div className="center-button">
+        <Link to="/complaint">
+          <button className="nav-btn">Go to Complaint Form</button>
+        </Link>
+      </div>
       <h2>Your Complaint History</h2>
       {complaints.length === 0 ? (
         <p>No complaints found.</p>

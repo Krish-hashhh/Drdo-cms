@@ -20,7 +20,7 @@ function Complaint() {
     const complaintData = {
       hostel,
       ...(showBlockDropdown && { block }),
-      ...(showBlockDropdown1 && { block: block1 }),
+      ...(showBlockDropdown1 && { block1 }),
       location,
       ...(location === "Room" && { roomNumber }),
       ...(location === "Toilet" && { toilet }),
@@ -62,7 +62,7 @@ function Complaint() {
           <option value="Library">Library</option>
         </select>
 
-        {/* Block dropdowns */}
+        
         {showBlockDropdown && (
           <>
             <label>Block</label>
@@ -94,7 +94,7 @@ function Complaint() {
           </>
         )}
 
-        {/* Complaint Location */}
+       
         <label>Complaint Location</label>
         <select value={location} onChange={(e) => setLocation(e.target.value)} required>
           <option value="">Detailed Location</option>
@@ -104,7 +104,7 @@ function Complaint() {
           <option value="Qt">QT</option>
         </select>
 
-        {/* Dynamic Fields Based on Location */}
+       
         {location === "Room" && (
           <>
             <label>Room Number</label>
@@ -153,7 +153,7 @@ function Complaint() {
           </>
         )}
 
-        {/* Description */}
+       
         <label>Describe the Issue</label>
         <textarea
           placeholder="Describe your complaint here..."

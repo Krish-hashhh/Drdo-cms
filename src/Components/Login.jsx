@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import './Login.css';
+import { useNavigate } from "react-router-dom";
 
 
 function Login(){
@@ -7,6 +8,7 @@ function Login(){
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
+    const navigate= useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -18,6 +20,7 @@ function Login(){
 
         console.log("Logging in with",email);
         setError("");
+        navigate("/history");
     };
 
     return(
@@ -60,7 +63,7 @@ function Login(){
                  {error && <p className="error-message">{error}</p>}
          
 
-        <button type="submit" className="login-btn"><a className="log-a" href="/complaint">Login</a></button>
+            <button type="submit" className="login-btn">Login</button>
         <div className="Registeration-link">
         Not registered yet ? <span><a href="/register" >Click to register</a></span>
             </div>

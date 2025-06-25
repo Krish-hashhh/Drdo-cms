@@ -1,0 +1,80 @@
+.history-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 2rem;
+  background: #f7f9fc;
+  border-radius: 12px;
+  
+}
+
+.complaint-list {
+  list-style: none;
+  padding: 0;
+}
+
+.complaint-card {
+  background: white;
+  margin-bottom: 1rem;
+  border-left: 8px solid;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.complaint-card.pending { border-color: #ffc107; }
+.complaint-card.completed { border-color: #28a745; }
+.complaint-card.rejected { border-color: #dc3545; }
+.complaint-card.plumber { border-color: blue;}
+.complaint-card.carpenter { border-color: blue;}
+.complaint-card.electrician { border-color: blue;}
+.complaint-card.cleaner { border-color: blue;}
+
+.status-tag {
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: white;
+  text-transform: uppercase;
+  background-color: inherit;
+}
+
+.complaint-card.pending .status-tag { background:#ffc107; color: black; }
+.complaint-card.completed .status-tag { background: #28a745; }
+.complaint-card.rejected .status-tag { background: #dc3545; }
+.complaint-card.plumber .status-tag {background: blue;}
+.complaint-card.carpenter .status-tag {background: blue;}
+.complaint-card.electrician .status-tag {background: blue;}
+.complaint-card.cleaner .status-tag {background: blue;}
+
+
+.actions button,
+.assign-section button {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.assign-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.followup-section {
+  margin-top: 1rem;
+}
+
+.rejectbtn {
+   background-color: #dc3545;
+}
+
+.rejectbtn:hover{
+    background-color: #4f050d;
+}
+
+.completedbtn {
+    background-color: #28a745;
+    
+}
+
+.completedbtn:hover{
+    background-color: #00310c;
+}

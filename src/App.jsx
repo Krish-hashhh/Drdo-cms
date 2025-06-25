@@ -6,9 +6,11 @@ import Login from './Components/Login';
 import Register from './Components/Register';
 import Complaint from './Components/Complaint';
 import History from './Components/History';
+import Admin from './Components/Admin';
+import Worker from './Components/Worker';
 
 import './App.css';
-import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App(){
     return(
         <Router>
@@ -16,23 +18,15 @@ function App(){
                 <Navbar/>
             </div>
             <div>
-               <Switch>
-                 <Route exact path = "/">
-                    <Home/>
-                 </Route>
-                 <Route exact path = "/login">
-                    <Login/>
-                 </Route>
-                 <Route exact path = "/register">
-                    <Register/>
-                 </Route>
-                 <Route exact path = "/complaint">
-                    <Complaint/>
-                 </Route>
-                 <Route exact path = "/history">
-                    <History/>
-                 </Route>
-               </Switch>
+               <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/complaint" element={<Complaint />} />
+                  <Route path="/history" element={<History />} />
+                  <Route path="/admin" element={<Admin />} />
+                  <Route path="/worker" element={<Worker />} />
+               </Routes>
             </div>
             <div>
                 <Footer/>

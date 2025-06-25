@@ -2,10 +2,27 @@
   max-width: 800px;
   margin: 60px auto;
   padding: 2rem;
-  background: #f7f9fc;
+  background: #e6f7ff;
   border-radius: 12px;
-  font-family: 'Segoe UI', sans-serif;
 }
+
+.center-button {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  background-color:#004466;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+
 
 .history-container h2 {
   text-align: center;

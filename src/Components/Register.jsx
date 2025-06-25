@@ -1,5 +1,7 @@
 import React,{useState} from "react";
 import "./Register.css";
+import { useNavigate } from "react-router-dom";
+
 
 function Register(){
     const [formData, setFormData]= useState({
@@ -12,6 +14,8 @@ function Register(){
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const navigate = useNavigate();
+
 
     const handleChange = (e) => {
         const {name, value} =e.target;
@@ -32,6 +36,10 @@ function Register(){
         console.log("Registerating with:",formData);
         setError("");
         setSuccess("Registeration is successful");
+          setTimeout(() => {
+             navigate("/login");
+         }, 500)  
+
     };
 
     return(
@@ -109,8 +117,9 @@ function Register(){
                 </div>
                 {error && <p className="error-message">{error}</p>}
                 {success && <p className="success-message">{success}</p>}
-
                 <button type="submit" className="register-btn">Register</button>
+
+               
 
             </form>
         
