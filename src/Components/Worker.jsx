@@ -1,53 +1,93 @@
 import React, { useState, useEffect } from "react";
 import "./Worker.css";
+import { useNavigate } from 'react-router-dom';
 
-export default function Worker(){
+
+export default function Worker() {
   const [complaints, setComplaints] = useState([]);
-  
+  const navigate = useNavigate();
+
+  const workerRole = localStorage.getItem("role");
+
   useEffect(() => {
-    setComplaints([
-      { id: 1, hostel: "SR Bhawan", block: "B", location: "Room", roomNumber: "225", desc: "Tube light not working", status: "Pending" },
-      { id: 2, hostel: "Meera Bhawan", location: "Toilet", toilet: "T4", desc: "Water leakage", status: "Pending" },
-    ]);
+    if (workerRole !== "worker") {
+      navigate("/");
+    }
+  }, [navigate, workerRole]);
+
+useEffect(() => {
+  const category = localStorage.getItem("category");
+  if (!category) return;
+
+  fetch(`/api/complaints/assigned/${category}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`
+    }
+  })
+    .then(res => res.json())
+    .then(data => setComplaints(data))
+    .catch(err => console.error(err));
   }, []);
 
-  const updateStatus = (id, status) => 
-    setComplaints(cs => cs.map(c => c.id === id ? { ...c,status} : c));
+
+  const updateStatus = async (id, status) => {
+    const res = await fetch(`/api/complaints/${id}/status`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({ status })
+    });
+
+    const updated = await res.json();
+    setComplaints(prev =>
+      prev.map(c => (c._id === updated._id ? updated : c))
+    );
+  };
 
   return (
-    <div className="worker-container">
+    <div className="fullscreen">
+      <div className="worker-container">
         <h2>Worker Complaint Dashboard</h2>
         <ul className="complaint-list">
-            {complaints.map(c => {
-            return (
-            <li key={c.id} className={`complaint-card ${c.status.toLowerCase()}`}>
+          {complaints.map(c => (
+            <li key={c._id} className={`complaint-card ${c.status.toLowerCase()}`}>
               <div className="card-header">
                 <span className="status-tag">{c.status}</span>
               </div>
               <div className="card-body">
                 <p><strong>Hostel:</strong> {c.hostel}</p>
                 {c.block && <p><strong>Block:</strong> {c.block}</p>}
+                {c.block1 && <p><strong>Block:</strong> {c.block1}</p>}
                 {c.location && <p><strong>Location:</strong> {c.location}</p>}
                 {c.roomNumber && <p><strong>Room No:</strong> {c.roomNumber}</p>}
                 {c.toilet && <p><strong>Toilet:</strong> {c.toilet}</p>}
-                <p><strong>Description:</strong> {c.desc}</p>
-             </div>
-             {c.status==="Pending" && (
-             <div className="followup-section">
-                <button className="completedbtn" onClick={() => updateStatus(c.id, "Completed") }>
-                     Mark Completed
-                </button>
-                      
-                <button className="rejectbtn"onClick={() => updateStatus(c.id, "Rejected")}>
+                {c.corridor && <p><strong>Corridor:</strong> {c.corridor}</p>}
+                {c.qt && <p><strong>QT:</strong> {c.qt}</p>}
+                <p><strong>Description:</strong> {c.description}</p>
+              </div>
+
+              {c.status === "Assigned" && (
+                <div className="followup-section">
+                  <button
+                    className="completedbtn"
+                    onClick={() => updateStatus(c._id, "Completed")}
+                  >
+                    Mark Completed
+                  </button>
+                  <button
+                    className="rejectbtn"
+                    onClick={() => updateStatus(c._id, "Rejected")}
+                  >
                     Mark Rejected
-                </button>
-             </div>
-             )}
+                  </button>
+                </div>
+              )}
             </li>
-            );
-            })}
-  
-      </ul>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

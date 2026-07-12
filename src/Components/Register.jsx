@@ -9,38 +9,56 @@ function Register(){
         email:"",
         hostel:"",
         room:"",
-        phone:""
+        phone:"",
+        password:""
     });
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const navigate = useNavigate();
 
+      const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-    const handleChange = (e) => {
-        const {name, value} =e.target;
-        setFormData({...formData, [name]:value})
-    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-        const {name, email, hostel, room,phone }=formData;
+  const { name, email, hostel, room, phone, password } = formData;
 
-        if(!name || !email || !hostel || !room ||!phone){
-            setError("Please fill all the required fields.");
-            setSuccess("");
-            return;
-        }
+  if (!name || !email || !hostel || !room || !phone || !password) {
+    setError("Please fill all the required fields.");
+    setSuccess("");
+    return;
+  }
 
-        console.log("Registerating with:",formData);
-        setError("");
-        setSuccess("Registeration is successful");
-          setTimeout(() => {
-             navigate("/login");
-         }, 500)  
+  try {
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-    };
+    const data = await res.json();
+
+    if (!res.ok) {
+      setError(data.error || "Registration failed");
+      setSuccess("");
+      return;
+    }
+
+    setError("");
+    setSuccess("Registration successful! Redirecting to login...");
+    setTimeout(() => navigate("/login"), 1000);
+  } catch (err) {
+    setError("Something went wrong. Please try again later.");
+    setSuccess("");
+  }
+};
+
+
 
     return(
         <div className="register-whole">
@@ -110,6 +128,20 @@ function Register(){
                         name="phone"
                         id="phone"
                         value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        />
+                    </div>
+                </div>
+
+                 <div className="input-group">
+                    <label htmlFor="name">Password</label>
+                    <div className="wrapper">
+                        <input 
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={formData.password}
                         onChange={handleChange}
                         required
                         />
